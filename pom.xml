@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rental</groupId>
+	<artifactId>Online_Vehicle_Rental</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Online_Vehicle_Rental Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<!-- Targets a modern LTS release instead of 1.8: javac on very recent JDKs
+		     (e.g. 25) no longer reliably supports compiling for old --source/--target
+		     8, which is what caused the java.lang.invoke.StringConcatFactory /
+		     incomplete build path errors. 17 works with Tomcat 9 (javax.* namespace)
+		     running on a modern JDK. -->
+		<maven.compiler.release>17</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Connection pooling: replaces the single shared static Connection, which
+		     was not safe to use across concurrent requests. 4.x is the last
+		     HikariCP line that still supports Java 8. -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+
+		<!-- Password hashing: passwords must never be stored or compared in plain text. -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>0.4</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>Online_Vehicle_Rental</finalName>
+	</build>
+</project>
